@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cloudkit-operator-system
+
+resources:
+- fulfillment-service-rbac.yaml
+
+secretGenerator:
+  - name: cloudkit-config
+    options:
+      disableNameSuffixHash: true
+    envs:
+    - env/cloudkit-config.env
